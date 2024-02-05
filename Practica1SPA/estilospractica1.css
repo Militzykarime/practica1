@@ -1,0 +1,30 @@
+.fi1{
+    background-color: #e5a730; 
+    color: #ffc874;;
+}
+
+label{
+    color: #091f38;
+    font-size: 1.0 rem;
+    font-family: 'Times New Roman', Times, Serif;
+    font-weight: bold;
+
+}
+
+.bo{
+    background-color: #c15443;
+    color: #ffc874;
+
+}
+
+.le{
+    background-color: #d0002d;
+    color: #deffba;
+
+}
+
+.se{
+    background-color: #f8efc7;
+    color: #d0002d;
+
+}

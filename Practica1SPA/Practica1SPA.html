@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title> UNACH - CALCULADORA BASICA </title>
+        <link rel="stylesheet" href= "estilospractica1.css">
+        <script src="jquery-3.1.1.min.js"></script>
+        <script>
+        function operacion(){
+            var Num1 =
+            parseFloat(document.getElementById('txn1').value);
+            var Num2=
+            parseFloat(document.getElementById('txn2').value);
+            var operacion =
+            document.getElementById('combo1').value;
+                var resultado = 0;
+
+                switch (operacion){
+                    case "1":
+                        resultado = Num1 + Num2;
+                        break;
+                    case "2":
+                        resultado = Num1 - Num2;
+                        break;
+                    case "3":
+                        resultado = Num1 * Num2;
+                        break;
+                    return;
+
+                }
+
+                document.getElementById('txres').value = resultado;
+        }
+        </script>
+
+    </head>
+    <body>
+        <fieldset  class="fi1" style = "width: 350;">
+            <legend class="le"> Practica 1 - Calculadora basica </legend>
+        <table bordered width="200">
+        <tr>
+            <td> <label> Numero 1: </label></td>
+        </tr>
+
+        <tr>
+            <td> <input type="text" id="txn1" size="4" maxlenght="4"></td>
+        </tr>
+
+        <tr>
+            <td> <label> Numero 2: </label></td>
+        </tr>
+
+        <tr>
+            <td> <input type="text" id="txn2" size="4" maxlenght="4"></td>
+        </tr>
+    </table>
+
+        
+           
+                <label class="la1">Seleccione una opcion: </label>
+                    <select name="Selecciona una opcion "id="combo1" class="se">
+                        <option id="suma" value="1">suma</option> 
+                        <option id="resta" value="2">resta</option> 
+                        <option id="multiplicacion" value="3">multiplicacion</option> 
+                       
+            
+                    </select>
+                    <button class="bo" id="b1" onclick="operacion()">Ejecutar</button>
+                    
+                    
+          
+             <label> Resultado: </label>
+             <input type="text" id="txres" size="4" maxlenght="4">
+    
+
+        
+       
+
+        </fieldset>
+    </body>
+</html>
