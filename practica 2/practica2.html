@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>Practica 2</title>
+        <link rel="stylesheet" href= "estilos2.css">
+        <script src="jquery-3.1.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+
+var Nom = $("#Nom");
+var ApP = $("#ApP");
+var ApM = $("#ApM");
+var fechaNac = $("#fechaNac");
+
+$("#Gen").click(function() {
+    var val1 = (ApP.val().substring(0,2)).toUpperCase();
+    var val2 = (ApM.val().substring(0,1)).toUpperCase();
+    var val3 = (Nom.val().substring(0,1)).toUpperCase();
+   
+    if(Nom.val() != "" && ApP.val() !="" && ApM.val() !="" && fechaNac.val() !=""){
+        $("#Rfc").val(val1+val2+val3+fechaNac.val().substring(2,4)+fechaNac.val().substring(5,7)+fechaNac.val().substring(8,10)+"ABC");
+    }else {
+        alert("Llena todos los campos.");
+    }
+});
+
+    // Agregar evento click al botón de la API
+    $("#btnApi").click(function() {
+
+if($("#idUser").val()!=""){
+   
+    $.ajax({
+        url: "https://jsonplaceholder.typicode.com/users/" + $("#idUser").val(),
+        method: "GET",
+        dataType: "json", 
+        success: function(data) {
+        
+            $("#nombreAPI").val(data.name);
+            $("#emailAPI").val(data.email);
+        },
+        error: function() {
+            alert("No hay datos en API para el ID "+$("#idUser").val());
+        }
+    });
+}else{
+    alert('Debe ingresar un ID.');
+}
+});
+
+})
+
+        </script>
+        
+    </head>
+
+    <body>
+        <fieldset  class="fi1" style = "width: 350;">
+            <legend class="le"> Practica 2 -RFC </legend>
+            <label> Nombre: </label>
+        </br>
+            <input type="text" id="Nom" size="12" maxlenght="4" required>
+    </br>
+            <label> Apellido paterno: </label>
+        </br>
+            <input type="text" id="ApP" size="12" maxlenght="4">
+    </br>
+            <label> Apellido materno:</label>
+        </br>
+            <input type="text" id="ApM" size="12" maxlenght="4">
+    </br>
+        <label> Fecha de nacimiento:</label>
+        </br>
+        <input type="date" id="fechaNac" placeholder="dd/mm/aaaa">
+    </br> </br> 
+    <button id="Gen" class="b1">Generar un RFC</button>
+        </br> </br>
+        <label> RFC:</label>
+    </br>
+    <input type="text" id="Rfc" size="12" maxlenght="4">
+
+</fieldset>
+
+<fieldset  class="fi2" style = "width: 350;">
+    <legend class="le"> AJAX API-REST </legend>
+    <label>Ingresa el ID de un usuario para buscar en la API:</label>
+    <input type="number" id="idUser"  required>
+    <button id="btnApi" class="Bapi">Consultar API REST</button>
+</br>
+    <label>Nombre:</label>
+</br>
+
+    <input type="text" readonly id="nombreAPI">
+</br>
+    <label>Email:</label>
+</br>
+    <input type="text" readonly id="emailAPI">
+    </fieldset>
+    </body>
+</html>
